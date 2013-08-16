@@ -1,3 +1,5 @@
+" autocmd VimEnter * NERDTreeToggle
+nmap <F7> :NERDTreeToggle<cr>
 nmap <F8> :! xdot %<.dot<cr><cr>
 
 map <LEFT> <Nop>
