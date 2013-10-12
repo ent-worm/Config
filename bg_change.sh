@@ -18,6 +18,6 @@ img=~/image/pod.jpg
 
 echo Image URL: $img_url
 
-wget -q -O $img $img_url
+curl $img_url -o $img
 
 gsettings set org.gnome.desktop.background picture-uri file://$img
