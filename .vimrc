@@ -1,3 +1,37 @@
+execute pathogen#infect()
+
+let g:input_toggle = 1
+
+function! Fcitx2en()
+    let s:input_status = system("fcitx-remote")
+    if s:input_status == 2
+        let g:input_toggle = 1
+        let l:a = system("fcitx-remote -c")
+    endif
+endfunction
+
+function! Fcitx2zh()
+    let s:input_status = system("fcitx-remote")
+    if s:input_status != 2 && g:input_toggle == 1
+        let l:a = system("fcitx-remote -o")
+        let g:input_toggle = 0
+    endif
+endfunction
+
+function! FcitxClose()
+    let g:input_toggle = 1
+    let l:a = system("fcitx-remote -c")
+endfunction
+
+set timeoutlen=0
+autocmd InsertLeave * call FcitxClose()
+"autocmd InsertLeave * call Fcitx2en()
+"autocmd InsertEnter * call Fcitx2zh()
+
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+let g:indentLine_color_term = 239
+set cuc
+set cul
 " autocmd VimEnter * NERDTreeToggle
 nmap <F7> :NERDTreeToggle<cr>
 nmap <F8> :! xdot %<.dot<cr><cr>
@@ -427,4 +461,6 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-
+set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+set laststatus=2
+set ruler
