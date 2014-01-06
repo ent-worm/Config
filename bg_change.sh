@@ -14,10 +14,10 @@ rss=`wget -q -O - http://feeds.nationalgeographic.com/ng/photography/photo-of-th
 
 img_url=$(echo $rss|grep -o "http://[^\" ]*/exposure/[^\"]*"|head -1|sed -s 's:360x270:1600x900:')
 
-img=~/image/pod.jpg
+img=~/pod.jpg
 
 echo Image URL: $img_url
 
 curl $img_url -o $img
 
-awsetbg /home/baozi/image/pod.jpg
+awsetbg $img
