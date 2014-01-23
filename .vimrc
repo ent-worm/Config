@@ -1,4 +1,4 @@
-"execute pathogen#infect()
+execute pathogen#infect()
 
 set timeoutlen=0
 
@@ -10,7 +10,6 @@ autocmd InsertLeave * call FcitxClose()
 set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
 let g:indentLine_color_term = 239
 set cuc
-set cul
 ""auto complete
 set completeopt=longest,menu
 
@@ -45,6 +44,10 @@ set showcmd
 " imap { {}<ESC>i<CR><ESC>V<O
 " imap ( ()<LEFT>
 " imap [ []<LEFT>
+
+
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " maintainer: 
 "       Amir Salihefendic

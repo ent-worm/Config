@@ -1,20 +1,20 @@
 ---------------------------
 -- Default awesome theme --
 ---------------------------
-
+home = os.getenv("HOME")
 theme = {}
 
 theme.font          = "Microsoft YaHei 8"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = "#050c12"
+theme.bg_focus      = theme.bg_normal -- "#535d6c"
+theme.bg_urgent     = theme.bg_normal -- "#ff0000"
+theme.bg_minimize   = theme.bg_normal -- "#444444"
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#e9eae4"
+theme.fg_focus      = "#81e1dd"
+theme.fg_urgent     = theme.fg_focus -- "#ffffff"
+theme.fg_minimize   = theme.fg_focus -- "#ffffff"
 
 theme.border_width  = "1"
 theme.border_normal = "#000000"
@@ -74,7 +74,7 @@ theme.titlebar_maximized_button_normal_active = "/usr/share/awesome/themes/defau
 theme.titlebar_maximized_button_focus_active  = "/usr/share/awesome/themes/default/titlebar/maximized_focus_active.png"
 
 -- You can use your own command to set your wallpaper
-theme.wallpaper_cmd = { "awsetbg pod.jpg" }
+theme.wallpaper_cmd = { "awsetbg " .. home .. "/pod.jpg" }
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = "/usr/share/awesome/themes/default/layouts/fairhw.png"

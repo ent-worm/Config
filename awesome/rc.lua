@@ -12,6 +12,8 @@ vicious = require("vicious")
 -- Load Debian menu entries
 require("debian.menu")
 
+awful.util.spawn_with_shell("command -v compton && compton -cC -O 0.1 -I 0.1 -D 3 -f -z");
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -199,8 +201,8 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "p",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, "n",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -390,6 +392,7 @@ client.add_signal("focus", function(c)
                            end)
 client.add_signal("unfocus", function(c)
                             c.border_color = beautiful.border_normal
-                            c.opacity = 0.1
+                            c.opacity = 0.6
                            end)
 -- }}}
+
