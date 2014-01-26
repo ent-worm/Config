@@ -8,7 +8,7 @@ endfunction
 autocmd InsertLeave * call FcitxClose()
 
 set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
-let g:indentLine_color_term = 239
+"let g:indentLine_color_term = 239
 set cuc
 ""auto complete
 set completeopt=longest,menu

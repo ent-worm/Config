@@ -12,7 +12,9 @@ vicious = require("vicious")
 -- Load Debian menu entries
 require("debian.menu")
 
-awful.util.spawn_with_shell("command -v compton && compton -cC -O 0.1 -I 0.1 -D 3 -f -z");
+-- awful.util.spawn_with_shell("command -v compton && compton -cC -O 0.1 -I 0.1 -D 3 -f -z");
+awful.util.spawn_with_shell("command -v fcitx && fcitx");
+awful.util.spawn_with_shell("command -v goldendict&& goldendict");
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
