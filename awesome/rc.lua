@@ -14,7 +14,8 @@ require("debian.menu")
 
 -- awful.util.spawn_with_shell("command -v compton && compton -cC -O 0.1 -I 0.1 -D 3 -f -z");
 awful.util.spawn_with_shell("command -v fcitx && fcitx");
-awful.util.spawn_with_shell("command -v goldendict&& goldendict");
+awful.util.spawn_with_shell("command -v goldendict && goldendict");
+awful.util.spawn_with_shell("command -v workrave && workrave");
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -47,6 +48,7 @@ beautiful.init(awful.util.getdir("config") .. "/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
+-- terminal = "rxvt-unicode"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
