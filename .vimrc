@@ -52,14 +52,13 @@ let g:mapleader = ","
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Interface*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set cursorcolumn
-
+" Line Number
 set number
 
+" Show cmd while typing
 set showcmd
 
-
-" Keep 7 lines above and below the cursor
+" Scroll margin
 set scrolloff=7
 
 " Turn on the Wild menu
@@ -111,16 +110,27 @@ set completeopt=longest,menu
 " Enable syntax highlighting
 syntax enable
 
-colorscheme desert
-set background=dark
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+
+if has("gui_running")
+  set cursorcolumn
+  set cursorline
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+else
+  set cursorcolumn
+  colorscheme desert
+  set background=dark
+endif
+
+let g:indentLine_color_term = 239
+
+set listchars=tab:▸- ",eol:¬
+set list
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -136,13 +146,10 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
-
-" Be smart when using tabs ;)
 set smarttab
-
-" 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 
 " Linebreak on 500 characters
 set linebreak
@@ -151,8 +158,6 @@ set textwidth=500
 set autoindent
 set smartindent
 set wrap
-
-let g:indentLine_color_term = 239
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,6 +186,15 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" emacs C-a, C-e
+nmap <C-a> 0
+imap <C-a> <ESC>0i
+nmap <C-e> $
+imap <C-e> <ESC>$i
+
+vmap << <gv
+vmap >> >gv
 
 map <F5> :tabprevious<cr>
 map <F6> :tabnext<cr>
@@ -216,6 +230,9 @@ set statusline=[%F]%y%r%m%*%=[CWD:%{getcwd()}][Line:%l/%L,Column:%c][%p%%]
 nnoremap <space> za
 nnoremap <CR> i<CR><ESC>
 
+nmap <F7> :NERDTreeToggle<cr>
+nmap <F8> :! xdot %<.dot<cr><cr>
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -229,36 +246,10 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *Helper functions*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-
-
 function! FcitxClose()
     let l:a = system("fcitx-remote -c")
 endfunction
 autocmd InsertLeave * call FcitxClose()
-
-
-nmap <F7> :NERDTreeToggle<cr>
-nmap <F8> :! xdot %<.dot<cr><cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
