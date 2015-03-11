@@ -13,6 +13,7 @@ vicious = require("vicious")
 require("debian.menu")
 
 -- awful.util.spawn_with_shell("command -v compton && compton -cC -O 0.1 -I 0.1 -D 3 -f -z");
+awful.util.spawn_with_shell("command -v xscreensaver&& xscreensaver -nosplash &");
 awful.util.spawn_with_shell("command -v fcitx && fcitx");
 awful.util.spawn_with_shell("command -v goldendict && goldendict");
 awful.util.spawn_with_shell("command -v workrave && workrave");
@@ -269,7 +270,7 @@ globalkeys = awful.util.table.join(
     -- User Define
     awful.key({ "Control", "Mod1" }, "k", function () awful.util.spawn("keepassx") end),
     awful.key({ "Control", "Mod1" }, "f", function () awful.util.spawn("firefox") end),
-    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
+    awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key({ "Control", "Mod1" }, "h", function () awful.util.spawn(terminal .. " -e ranger") end)
 )
 
